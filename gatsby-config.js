@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
-    siteUrl: `https://gatsbystarterdefaultsource.gatsbyjs.io/`,
+    title: `블로그`,
+    description: `블로그 입니다.`,
+    author: `SolidCitadel`,
+    siteUrl: `https://SolidCitadel.github.io/`,
   },
   plugins: [
     {
@@ -20,6 +20,13 @@ module.exports = {
       options: {
         name: `contents`,
         path: `${__dirname}/contents`,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-canonical-urls',
+      options: {
+        siteUrl: 'https://[username].github.io/',
+        stripQueryString: true,
       },
     },
     `gatsby-transformer-sharp`,
