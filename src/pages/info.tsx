@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
-import { graphql, Link } from 'gatsby'
-import Text from 'components/Text'
+import { graphql } from 'gatsby'
+import { Global, css } from '@emotion/react'
+import styled from '@emotion/styled'
 
 type InfoPageProps = {
   data: {
@@ -14,6 +15,43 @@ type InfoPageProps = {
   }
 }
 
+// Tagged Template Literal
+const globalStyle = css`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 나눔고딕, serif;
+    font-size: 20px;
+  }
+`
+
+// const TextStyle = css`
+//   font-size: 30px;
+//   font-weight: 700;
+//   color: gray;
+// `
+
+const Text = styled.div`
+  font-size: 30px;
+  font-weight: 700;
+  color: gray;
+`
+
+// Styled Component / Tagged Template Literal (Kebab Case)
+const Text1 = styled.div<{ disable: boolean }>`
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: ${({ disable }) => (disable ? 'line-through' : 'none')};
+`
+
+// Styled Component / Object (Camel Case)
+const Text2 = styled('div')<{ disable: boolean }>(({ disable }) => ({
+  fontSize: '15px',
+  color: 'blue',
+  textDecoration: disable ? 'line-through' : 'none',
+}))
+
 const InfoPage: FunctionComponent<InfoPageProps> = function ({
   data: {
     site: {
@@ -23,10 +61,11 @@ const InfoPage: FunctionComponent<InfoPageProps> = function ({
 }) {
   return (
     <div>
-      <Text text={title} />
-      <Text text={description} />
-      <Text text={author} />
-      <Link to="/">To Main</Link>
+      <Global styles={globalStyle} />
+      {/*<div css={TextStyle}>{title}</div>*/}
+      <Text>{title}</Text>
+      <Text1 disable={true}>{description}</Text1>
+      <Text2 disable={true}>{author}</Text2>
     </div>
   )
 }
