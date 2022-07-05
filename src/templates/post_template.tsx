@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import { graphql } from 'gatsby'
-import { PostFrontmatterType, PostPageItemType } from 'types/PostItem.types' // 바로 아래에서 정의할 것입니다
+import { PostFrontmatterType } from 'types/PostItem.types' // 바로 아래에서 정의할 것입니다
 import Template from 'components/Common/Template'
-import PostHead from 'components/Post/PostHead'
+import PostHead, { PostHeadProps } from 'components/Post/PostHead'
 import PostContent from 'components/Post/PostContent'
 import CommentWidget from 'components/Post/CommentWidget'
 
@@ -22,10 +22,16 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
   const {
     node: { html, frontmatter },
   } = edges[0]
+  const postHeadProps: PostHeadProps = {
+    title: frontmatter.title,
+    date: frontmatter.date,
+    categories: frontmatter.categories,
+    thumbnail: frontmatter.thumbnail.childImageSharp.gatsbyImageData,
+  }
 
   return (
     <Template>
-      <PostHead {...frontmatter} />
+      <PostHead {...postHeadProps} />
       <PostContent html={html} />
       <CommentWidget />
     </Template>

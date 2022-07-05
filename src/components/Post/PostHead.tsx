@@ -9,7 +9,7 @@ type GatsbyImgProps = {
   className?: string
 }
 
-type PostHeadProps = PostHeadInfoProps & {
+export type PostHeadProps = PostHeadInfoProps & {
   thumbnail: IGatsbyImageData
 }
 
