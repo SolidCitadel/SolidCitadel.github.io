@@ -12,13 +12,14 @@ const HeaderWrapper = styled.header`
   width: 100%;
   background-color: white;
   z-index: 300;
+  border-bottom: solid 1px #e2e2e2;
 `
 
 const Title = styled(Link)`
   font-size: 25px;
   font-weight: 600;
   color: #2c3e50;
-  padding-bottom: 1px;
+  padding-bottom: 2px;
   cursor: pointer;
 `
 
