@@ -31,14 +31,15 @@ const useInfiniteScroll = function (
     [selectedCategory],
   )
 
-  const observer: IntersectionObserver = new IntersectionObserver(
-    (entries, observer) => {
+  let observer: IntersectionObserver
+  useEffect(() => {
+    observer = new IntersectionObserver((entries, observer) => {
       if (!entries[0].isIntersecting) return
 
       setCount(value => value + 1)
       observer.disconnect()
-    },
-  )
+    })
+  }, [])
 
   useEffect(() => setCount(1), [selectedCategory])
 
