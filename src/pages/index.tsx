@@ -7,6 +7,12 @@ import { IGatsbyImageData } from 'gatsby-plugin-image'
 import { PostListItemType } from 'types/PostItem.types'
 import queryString, { ParsedQuery } from 'query-string'
 import Template from 'components/Common/Template'
+import styled from '@emotion/styled'
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 
 type IndexPageProps = {
   location: {
@@ -64,20 +70,22 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
 
   return (
     <Template>
-      <Introduction profileImage={gatsbyImageData} />
-      <CategoryList
-        selectedCategory={selectedCategory}
-        categoryList={categoryList}
-      />
-      <PostList selectedCategory={selectedCategory} posts={edges} />
+      <Container>
+        <Introduction profileImage={gatsbyImageData} />
+        <CategoryList
+          selectedCategory={selectedCategory}
+          categoryList={categoryList}
+        />
+        <PostList selectedCategory={selectedCategory} posts={edges} />
+      </Container>
     </Template>
   )
 }
 
 export default IndexPage
 
-export const getPostList = graphql`
-  query getPostList {
+export const indexPage = graphql`
+  query indexPage {
     allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date, frontmatter___title] }
     ) {

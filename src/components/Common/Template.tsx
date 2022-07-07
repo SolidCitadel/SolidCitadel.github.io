@@ -17,8 +17,6 @@ const Container = styled.div`
 
 const Contents = styled.div`
   margin-top: 60px;
-  display: flex;
-  flex-direction: column;
 `
 
 const Template: FunctionComponent<TemplateProps> = function ({ children }) {

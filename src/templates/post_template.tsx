@@ -5,23 +5,40 @@ import Template from 'components/Common/Template'
 import PostHead, { PostHeadProps } from 'components/Post/PostHead'
 import PostContent from 'components/Post/PostContent'
 import CommentWidget from 'components/Post/CommentWidget'
+import styled from '@emotion/styled'
+import RightSide from 'components/Post/RightSide'
+import LeftSide, { LeftSideItemType } from 'components/Post/LeftSide'
 
 type PostTemplateProps = {
   data: {
-    allMarkdownRemark: {
+    slugMarkdownRemark: {
       edges: PostPageItemType[] // 존재하지 않는 타입이므로 에러가 발생하지만 일단 작성해주세요
+    }
+    allMarkdownRemark: {
+      edges: LeftSideItemType[]
     }
   }
 }
 
+const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
+const Center = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
 const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
   data: {
+    slugMarkdownRemark: { edges: sedges },
     allMarkdownRemark: { edges },
   },
 }) {
   const {
     node: { html, frontmatter },
-  } = edges[0]
+  } = sedges[0]
   const postHeadProps: PostHeadProps = {
     title: frontmatter.title,
     date: frontmatter.date,
@@ -31,9 +48,15 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
 
   return (
     <Template>
-      <PostHead {...postHeadProps} />
-      <PostContent html={html} />
-      <CommentWidget />
+      <Container>
+        <LeftSide items={edges} />
+        <Center>
+          <PostHead {...postHeadProps} />
+          <PostContent html={html} />
+          <CommentWidget />
+        </Center>
+        <RightSide />
+      </Container>
     </Template>
   )
 }
@@ -42,7 +65,9 @@ export default PostTemplate
 
 export const queryMarkdownDataBySlug = graphql`
   query queryMarkdownDataBySlug($slug: String) {
-    allMarkdownRemark(filter: { fields: { slug: { eq: $slug } } }) {
+    slugMarkdownRemark: allMarkdownRemark(
+      filter: { fields: { slug: { eq: $slug } } }
+    ) {
       edges {
         node {
           html
@@ -56,6 +81,21 @@ export const queryMarkdownDataBySlug = graphql`
                 gatsbyImageData
               }
             }
+          }
+        }
+      }
+    }
+    allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date, frontmatter___title] }
+    ) {
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            title
           }
         }
       }
