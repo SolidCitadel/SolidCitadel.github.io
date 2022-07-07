@@ -75,6 +75,7 @@ module.exports = {
               rel: 'nofollow',
             },
           },
+          `gatsby-remark-autolink-headers`,
         ],
       },
     },
