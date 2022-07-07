@@ -1,2 +1,0 @@
-"use strict";(self.webpackChunkgatsby_starter_default=self.webpackChunkgatsby_starter_default||[]).push([[691],{9148:function(e,t,n){var r=n(7294);t.Z=function(e){var t=e.text;return r.createElement("div",null,t)}},6854:function(e,t,n){n.r(t);var r=n(7294),a=n(9148),l=n(1597);t.default=function(){return r.createElement("div",null,r.createElement(a.Z,{text:"Hello, World!"}),r.createElement(l.rU,{to:"/info/"},"To Info"))}}}]);
-//# sourceMappingURL=component---src-pages-index-tsx-01db1df75ab4de80c0ea.js.map
