@@ -27,8 +27,13 @@ const LeftSideItem: FunctionComponent<LeftSideItemType> = function ({
     frontmatter: { title },
   },
 }) {
-  if (id + slug) console.log(1)
-  return <Container to={slug}>{title}</Container>
+  if (id) console.log(1)
+  let arr = slug.substring(1, slug.length - 1).split('/')
+  return (
+    <Container to={slug}>
+      {arr.slice(0, arr.length - 1).join('/') + '/' + title}
+    </Container>
+  )
 }
 
 export default LeftSideItem

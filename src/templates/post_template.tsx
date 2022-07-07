@@ -10,6 +10,14 @@ import RightSide from 'components/Post/RightSide'
 import LeftSide from 'components/Post/LeftSide'
 import { LeftSideItemType } from 'components/Post/LeftSideItem'
 
+export type PostPageItemType = {
+  node: {
+    html: string
+    frontmatter: PostFrontmatterType
+    tableOfContents: string
+  }
+}
+
 type PostTemplateProps = {
   data: {
     slugMarkdownRemark: {
@@ -24,6 +32,10 @@ type PostTemplateProps = {
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 1368px) {
+    justify-content: center;
+  }
 `
 
 const Center = styled.div`
@@ -104,11 +116,3 @@ export const queryMarkdownDataBySlug = graphql`
     }
   }
 `
-
-export type PostPageItemType = {
-  node: {
-    html: string
-    frontmatter: PostFrontmatterType
-    tableOfContents: string
-  }
-}

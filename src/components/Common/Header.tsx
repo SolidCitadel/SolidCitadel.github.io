@@ -7,7 +7,7 @@ const HeaderWrapper = styled.header`
   place-items: center;
   height: 60px;
   padding: 11px 24px;
-  position: fixed;
+  position: sticky;
   top: 0;
   width: 100%;
   background-color: white;

@@ -15,9 +15,7 @@ const Container = styled.div`
   height: 100%;
 `
 
-const Contents = styled.div`
-  margin-top: 60px;
-`
+const Contents = styled.div``
 
 const Template: FunctionComponent<TemplateProps> = function ({ children }) {
   return (
