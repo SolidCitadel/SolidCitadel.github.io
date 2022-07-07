@@ -1,23 +1,17 @@
 import styled from '@emotion/styled'
 import { FunctionComponent } from 'react'
+import LeftSideItem, { LeftSideItemType } from './LeftSideItem'
 
-const Container = styled.aside`
-  display: flex;
-  flex-direction: column;
-  width: 200px;
+const LeftSideWrapper = styled.aside`
+  width: 250px;
+  border-right: solid 1px #e2e2e2;
 `
 
-export type LeftSideItemType = {
-  node: {
-    id: string
-    fields: {
-      slug: string
-    }
-    frontmatter: {
-      title: string
-    }
-  }
-}
+const LeftSideContainer = styled.div`
+  position: sticky;
+  top: 65px;
+  margin-bottom: auto;
+`
 
 type LeftSideType = {
   items: LeftSideItemType[]
@@ -25,19 +19,13 @@ type LeftSideType = {
 
 const LeftSide: FunctionComponent<LeftSideType> = function ({ items }) {
   return (
-    <Container>
-      {items.map(
-        ({
-          node: {
-            id,
-            fields: { slug },
-            frontmatter: { title },
-          },
-        }: LeftSideItemType) => (
-          <div>{id + slug && title}</div>
-        ),
-      )}
-    </Container>
+    <LeftSideWrapper>
+      <LeftSideContainer>
+        {items.map(({ node }: LeftSideItemType) => (
+          <LeftSideItem node={node} />
+        ))}
+      </LeftSideContainer>
+    </LeftSideWrapper>
   )
 }
 

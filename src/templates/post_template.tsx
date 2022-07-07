@@ -1,18 +1,19 @@
 import React, { FunctionComponent } from 'react'
 import { graphql } from 'gatsby'
-import { PostFrontmatterType } from 'types/PostItem.types' // 바로 아래에서 정의할 것입니다
+import { PostFrontmatterType } from 'types/PostItem.types'
 import Template from 'components/Common/Template'
 import PostHead, { PostHeadProps } from 'components/Post/PostHead'
 import PostContent from 'components/Post/PostContent'
 import CommentWidget from 'components/Post/CommentWidget'
 import styled from '@emotion/styled'
 import RightSide from 'components/Post/RightSide'
-import LeftSide, { LeftSideItemType } from 'components/Post/LeftSide'
+import LeftSide from 'components/Post/LeftSide'
+import { LeftSideItemType } from 'components/Post/LeftSideItem'
 
 type PostTemplateProps = {
   data: {
     slugMarkdownRemark: {
-      edges: PostPageItemType[] // 존재하지 않는 타입이므로 에러가 발생하지만 일단 작성해주세요
+      edges: PostPageItemType[]
     }
     allMarkdownRemark: {
       edges: LeftSideItemType[]
@@ -37,7 +38,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
   },
 }) {
   const {
-    node: { html, frontmatter },
+    node: { html, frontmatter, tableOfContents },
   } = sedges[0]
   const postHeadProps: PostHeadProps = {
     title: frontmatter.title,
@@ -55,7 +56,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
           <PostContent html={html} />
           <CommentWidget />
         </Center>
-        <RightSide />
+        <RightSide html={tableOfContents} />
       </Container>
     </Template>
   )
@@ -82,6 +83,7 @@ export const queryMarkdownDataBySlug = graphql`
               }
             }
           }
+          tableOfContents
         }
       }
     }
@@ -107,5 +109,6 @@ export type PostPageItemType = {
   node: {
     html: string
     frontmatter: PostFrontmatterType
+    tableOfContents: string
   }
 }
