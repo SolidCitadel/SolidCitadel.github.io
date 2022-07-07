@@ -1,6 +1,6 @@
 ---
 date: '2022-07-06'
-title: 'Test'
+title: 'Test3'
 categories: ['Web']
 summary: '테스트용 포스트'
 thumbnail: './test.png'

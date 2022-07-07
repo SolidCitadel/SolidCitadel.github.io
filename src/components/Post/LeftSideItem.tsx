@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 import { FunctionComponent } from 'react'
+import { Link } from 'gatsby'
 
 export type LeftSideItemType = {
   node: {
@@ -13,7 +14,7 @@ export type LeftSideItemType = {
   }
 }
 
-const Container = styled.div`
+const Container = styled(Link)`
   padding: 3px;
   margin: 5px;
   cursor: pointer;
@@ -27,7 +28,7 @@ const LeftSideItem: FunctionComponent<LeftSideItemType> = function ({
   },
 }) {
   if (id + slug) console.log(1)
-  return <Container>{title}</Container>
+  return <Container to={slug}>{title}</Container>
 }
 
 export default LeftSideItem

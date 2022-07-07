@@ -11,6 +11,8 @@ const LeftSideContainer = styled.div`
   position: sticky;
   top: 65px;
   margin-bottom: auto;
+  display: flex;
+  flex-direction: column;
 `
 
 type LeftSideType = {
