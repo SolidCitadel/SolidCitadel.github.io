@@ -1,6 +1,5 @@
 import styled from '@emotion/styled'
 import { FunctionComponent } from 'react'
-import { Link } from 'gatsby'
 
 export type LeftSideItemType = {
   node: {
@@ -14,7 +13,7 @@ export type LeftSideItemType = {
   }
 }
 
-const Container = styled(Link)`
+const Container = styled.a`
   padding: 3px;
   margin: 5px;
   cursor: pointer;
@@ -26,7 +25,7 @@ const LeftSideItem: FunctionComponent<LeftSideItemType> = function ({
     frontmatter: { title },
   },
 }) {
-  return <Container to={slug}>{title}</Container>
+  return <Container href={slug}>{title}</Container>
 }
 
 export default LeftSideItem

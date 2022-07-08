@@ -11,7 +11,7 @@ type ArrowImagesType = {
   rightArrow: ArrowImageType
 }
 
-export const useFolder = () => {
+const useFolder = () => {
   const {
     downArrow: {
       childImageSharp: { gatsbyImageData: downArrow },
@@ -50,3 +50,5 @@ export const useFolder = () => {
   }
   return { arrowImage, ulRef, toggleFolder }
 }
+
+export default useFolder

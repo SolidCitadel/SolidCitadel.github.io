@@ -5,7 +5,7 @@ import { deepCopy } from 'deep-copy-ts'
 import styled from '@emotion/styled'
 import React from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import { useFolder } from 'hooks/useFolder'
+import useFolder from 'hooks/useFolder'
 
 type LeftSideFolderProps = {
   name: string

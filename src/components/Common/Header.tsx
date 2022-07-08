@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react'
 import styled from '@emotion/styled'
-import { Link } from 'gatsby'
 
 const HeaderWrapper = styled.header`
   display: flex;
@@ -15,7 +14,7 @@ const HeaderWrapper = styled.header`
   border-bottom: solid 1px #e2e2e2;
 `
 
-const Title = styled(Link)`
+const Title = styled.a`
   font-size: 25px;
   font-weight: 600;
   color: #2c3e50;
@@ -30,7 +29,7 @@ const NavigationWrapper = styled.div`
 const Header: FunctionComponent = function () {
   return (
     <HeaderWrapper>
-      <Title to={`/`}> SolidCitadel </Title>
+      <Title href={`/`}> SolidCitadel </Title>
       <NavigationWrapper> Nav </NavigationWrapper>
     </HeaderWrapper>
   )

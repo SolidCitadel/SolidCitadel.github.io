@@ -42,4 +42,4 @@ const LeftSide: FunctionComponent<LeftSideProps> = function ({ items }) {
   )
 }
 
-export default React.memo(LeftSide)
+export default LeftSide
