@@ -1,11 +1,11 @@
-import { FunctionComponent, useRef, useState } from 'react'
+import { FunctionComponent } from 'react'
 import LeftSideItem, { LeftSideItemType } from './LeftSideItem'
 import { LeftSideProps } from './LeftSide'
 import { deepCopy } from 'deep-copy-ts'
 import styled from '@emotion/styled'
 import React from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import { useFolder } from 'hooks/useFolder'
 
 type LeftSideFolderProps = {
   name: string
@@ -23,7 +23,7 @@ const FolderHead = styled.button`
 `
 
 const Arrow = styled(GatsbyImage)`
-  width: 14px;
+  width: 12px;
   margin-right: 3px;
 `
 
@@ -42,43 +42,13 @@ const LeftSideFolder: FunctionComponent<LeftSideFolderProps> = function ({
   })
 
   let key = 0
-  const ulRef = useRef<HTMLUListElement>(null)
-  const [state, setState] = useState(true)
-  const toggleFolder = () => {
-    if (ulRef.current) {
-      if (state) ulRef.current.style.display = 'none'
-      else ulRef.current.style.display = 'block'
-      setState(!state)
-    }
-  }
-
-  const {
-    downArrow: {
-      childImageSharp: { gatsbyImageData: downArrow },
-    },
-    rightArrow: {
-      childImageSharp: { gatsbyImageData: rightArrow },
-    },
-  } = useStaticQuery(graphql`
-    query {
-      rightArrow: file(name: { eq: "right-arrow" }) {
-        childImageSharp {
-          gatsbyImageData
-        }
-      }
-      downArrow: file(name: { eq: "down-arrow" }) {
-        childImageSharp {
-          gatsbyImageData
-        }
-      }
-    }
-  `)
+  const { arrowImage, ulRef, toggleFolder } = useFolder()
 
   return (
     <>
       {name && (
         <FolderHead onClick={toggleFolder}>
-          <Arrow image={state ? downArrow : rightArrow} alt={'404'} />
+          <Arrow image={arrowImage} alt={'404'} />
           <span>{name}</span>
         </FolderHead>
       )}

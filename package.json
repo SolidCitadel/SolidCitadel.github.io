@@ -13,6 +13,7 @@
     "@parcel/cache": "^2.6.2",
     "@parcel/workers": "^2.6.2",
     "@types/react-helmet": "^6.1.5",
+    "deep-copy-ts": "^0.5.4",
     "gatsby": "^4.17.2",
     "gatsby-plugin-canonical-urls": "^4.17.0",
     "gatsby-plugin-emotion": "^7.17.0",
