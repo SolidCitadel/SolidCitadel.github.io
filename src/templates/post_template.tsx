@@ -107,6 +107,7 @@ export const queryMarkdownDataBySlug = graphql`
           id
           fields {
             slug
+            directory
           }
           frontmatter {
             title

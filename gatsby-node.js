@@ -23,8 +23,11 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
   if (node.internal.type === `MarkdownRemark`) {
     const slug = createFilePath({ node, getNode })
+    const arr = slug.substring(1, slug.length - 1).split('/')
+    arr.pop()
 
     createNodeField({ node, name: 'slug', value: slug })
+    createNodeField({ node, name: 'directory', value: arr })
   }
 }
 

@@ -1,6 +1,8 @@
 import styled from '@emotion/styled'
 import { FunctionComponent } from 'react'
-import LeftSideItem, { LeftSideItemType } from './LeftSideItem'
+import { LeftSideItemType } from './LeftSideItem'
+import LeftSideFolder from './LeftSideFolder'
+import React from 'react'
 
 const LeftSideWrapper = styled.aside`
   width: 250px;
@@ -17,32 +19,27 @@ const LeftSideContainer = styled.div`
   margin-bottom: auto;
   display: flex;
   flex-direction: column;
+
+  li {
+    margin-left: 10px;
+  }
+  ul {
+    list-style: none;
+  }
 `
 
-type LeftSideType = {
+export type LeftSideProps = {
   items: LeftSideItemType[]
 }
 
-const LeftSide: FunctionComponent<LeftSideType> = function ({ items }) {
-  items.forEach(
-    ({
-      node: {
-        fields: { slug },
-      },
-    }) => {
-      let arr = slug.split('/')
-      arr = arr.slice(0, arr.length - 1)
-    },
-  )
+const LeftSide: FunctionComponent<LeftSideProps> = function ({ items }) {
   return (
     <LeftSideWrapper>
       <LeftSideContainer>
-        {items.map(({ node }: LeftSideItemType) => (
-          <LeftSideItem node={node} />
-        ))}
+        <LeftSideFolder name="" items={items} />
       </LeftSideContainer>
     </LeftSideWrapper>
   )
 }
 
-export default LeftSide
+export default React.memo(LeftSide)
