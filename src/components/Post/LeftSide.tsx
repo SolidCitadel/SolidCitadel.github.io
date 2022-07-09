@@ -19,12 +19,35 @@ const LeftSideContainer = styled.div`
   margin-bottom: auto;
   display: flex;
   flex-direction: column;
+  font-size: 18px;
 
   li {
-    margin-left: 10px;
+    margin-left: 20px;
   }
+
   ul {
     list-style: none;
+  }
+
+  & > ul > li {
+    margin-left: 15px;
+  }
+
+  span {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  a {
+    line-height: 30px;
+
+    :hover {
+      color: #adadad;
+    }
+  }
+
+  button {
+    height: 30px;
   }
 `
 

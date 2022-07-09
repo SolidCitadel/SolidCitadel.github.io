@@ -14,8 +14,6 @@ export type LeftSideItemType = {
 }
 
 const Container = styled.a`
-  padding: 3px;
-  margin: 5px;
   cursor: pointer;
 `
 

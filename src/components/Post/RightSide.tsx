@@ -14,13 +14,22 @@ const HtmlRenderer = styled.div`
   position: sticky;
   top: 80px;
   margin-bottom: auto;
+  font-size: 18px;
+  margin-right: 10px;
   li {
-    margin: 10px 0;
+    margin: 7px 0 7px 10px;
+  }
+  a {
+    display: block;
+    border-radius: 5px;
+    padding: 3px 0 3px 5px;
+    :hover {
+      background-color: #e2e2e2;
+    }
   }
   ul {
     list-style: none;
-    margin-left: 5px;
-    padding-left: 10px;
+    margin-left: 15px;
     border-left: solid 2px grey;
   }
   & > ul {

@@ -4,7 +4,6 @@ import { LeftSideProps } from './LeftSide'
 import { deepCopy } from 'deep-copy-ts'
 import styled from '@emotion/styled'
 import React from 'react'
-import { GatsbyImage } from 'gatsby-plugin-image'
 import useFolder from 'hooks/useFolder'
 
 type LeftSideFolderProps = {
@@ -15,16 +14,13 @@ const FolderHead = styled.button`
   border: none;
   background: none;
   cursor: pointer;
-  span {
-    font-size: 16px;
-  }
   display: flex;
   align-items: center;
 `
 
-const Arrow = styled(GatsbyImage)`
+const Arrow = styled.img`
   width: 12px;
-  margin-right: 3px;
+  margin-right: 5px;
 `
 
 const LeftSideFolder: FunctionComponent<LeftSideFolderProps> = function ({
@@ -48,7 +44,7 @@ const LeftSideFolder: FunctionComponent<LeftSideFolderProps> = function ({
     <>
       {name && (
         <FolderHead onClick={toggleFolder}>
-          <Arrow image={arrowImage} alt={'404'} />
+          <Arrow src={arrowImage} alt={'404'} />
           <span>{name}</span>
         </FolderHead>
       )}

@@ -7,6 +7,7 @@ import HtmlHead from 'components/Common/HtmlHead'
 
 type TemplateProps = {
   children: ReactNode
+  title: string
 }
 
 const Container = styled.div`
@@ -17,10 +18,13 @@ const Container = styled.div`
 
 const Contents = styled.div``
 
-const Template: FunctionComponent<TemplateProps> = function ({ children }) {
+const Template: FunctionComponent<TemplateProps> = function ({
+  children,
+  title,
+}) {
   return (
     <Container>
-      <HtmlHead />
+      <HtmlHead title={title} />
       <GlobalStyle />
       <Header />
       <Contents>{children}</Contents>

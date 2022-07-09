@@ -69,7 +69,7 @@ const IndexPage: FunctionComponent<IndexPageProps> = function ({
   )
 
   return (
-    <Template>
+    <Template title={'SolidCitadel'}>
       <Container>
         <Introduction profileImage={gatsbyImageData} />
         <CategoryList

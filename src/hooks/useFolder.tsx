@@ -1,9 +1,8 @@
 import { graphql, useStaticQuery } from 'gatsby'
-import { IGatsbyImageData } from 'gatsby-plugin-image'
 import { useRef, useState } from 'react'
 
 type ArrowImageType = {
-  childImageSharp: { gatsbyImageData: IGatsbyImageData }
+  publicURL: string
 }
 
 type ArrowImagesType = {
@@ -13,23 +12,15 @@ type ArrowImagesType = {
 
 const useFolder = () => {
   const {
-    downArrow: {
-      childImageSharp: { gatsbyImageData: downArrow },
-    },
-    rightArrow: {
-      childImageSharp: { gatsbyImageData: rightArrow },
-    },
+    downArrow: { publicURL: downArrow },
+    rightArrow: { publicURL: rightArrow },
   }: ArrowImagesType = useStaticQuery(graphql`
     query {
       rightArrow: file(name: { eq: "right-arrow" }) {
-        childImageSharp {
-          gatsbyImageData
-        }
+        publicURL
       }
       downArrow: file(name: { eq: "down-arrow" }) {
-        childImageSharp {
-          gatsbyImageData
-        }
+        publicURL
       }
     }
   `)

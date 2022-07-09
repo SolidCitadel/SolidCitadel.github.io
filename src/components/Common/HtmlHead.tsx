@@ -1,9 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { Helmet } from 'react-helmet'
 
-const HtmlHead: FunctionComponent<{ title?: string }> = function ({
-  title = 'SolidCitadel',
-}) {
+const HtmlHead: FunctionComponent<{ title: string }> = function ({ title }) {
   return (
     <Helmet>
       <title>{title}</title>

@@ -60,7 +60,7 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
   }
 
   return (
-    <Template>
+    <Template title={frontmatter.title}>
       <Container>
         <LeftSide items={edges} />
         <Center>
