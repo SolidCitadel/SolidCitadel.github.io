@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { FunctionComponent } from 'react'
-import { LeftSideItemType } from './LeftSideItem'
+import { LeftSideProps } from 'types/LeftSideItem.types'
 import LeftSideFolder from './LeftSideFolder'
 import React from 'react'
 
@@ -15,6 +15,7 @@ const LeftSideWrapper = styled.div`
 
 const LeftSideContainer = styled.nav`
   font-size: 18px;
+  margin-right: 10px;
 
   li {
     margin-left: 20px;
@@ -34,12 +35,16 @@ const LeftSideContainer = styled.nav`
   }
 
   a {
+    display: block;
     line-height: 30px;
     transition: all 0.25s ease 0s;
-
-    :hover {
-      color: #adadad;
-    }
+    border-radius: 5px;
+  }
+  a.active {
+    background-color: #f1f1f1;
+  }
+  a:hover {
+    background-color: #cfcece;
   }
 
   button {
@@ -47,15 +52,16 @@ const LeftSideContainer = styled.nav`
   }
 `
 
-export type LeftSideProps = {
-  items: LeftSideItemType[]
-}
-
-const LeftSide: FunctionComponent<LeftSideProps> = function ({ items }) {
+const LeftSide: FunctionComponent<LeftSideProps> = function ({
+  items,
+  pathname,
+}) {
+  const path = pathname.substring(1, pathname.length - 1).split('/')
+  console.log(path)
   return (
     <LeftSideWrapper>
       <LeftSideContainer>
-        <LeftSideFolder name="" items={items} />
+        <LeftSideFolder name="" items={items} path={path} />
       </LeftSideContainer>
     </LeftSideWrapper>
   )

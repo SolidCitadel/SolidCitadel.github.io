@@ -28,14 +28,14 @@ const HtmlRenderer = styled.nav`
     border-radius: 5px;
     padding: 3px 5px 3px 5px;
     transition: all 0.25s ease 0s;
-
-    :hover {
-      background-color: #e2e2e2;
-    }
   }
 
   a.active {
-    background-color: #b4b4b4;
+    background-color: #f1f1f1;
+  }
+
+  a:hover {
+    background-color: #cfcece;
   }
 
   ul {

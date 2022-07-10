@@ -8,7 +8,7 @@ import CommentWidget from 'components/Post/CommentWidget'
 import styled from '@emotion/styled'
 import RightSide from 'components/Post/RightSide'
 import LeftSide from 'components/Post/LeftSide'
-import { LeftSideItemType } from 'components/Post/LeftSideItem'
+import { LeftSideItemProps } from 'types/LeftSideItem.types'
 
 export type PostPageItemType = {
   node: {
@@ -27,7 +27,7 @@ type PostTemplateProps = {
       edges: PostPageItemType[]
     }
     allMarkdownRemark: {
-      edges: LeftSideItemType[]
+      edges: LeftSideItemProps[]
     }
   }
 }
@@ -60,8 +60,6 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
     allMarkdownRemark: { edges },
   },
 }) {
-  console.log(pathname)
-
   const {
     node: { html, frontmatter, tableOfContents },
   } = sedges[0]
@@ -71,10 +69,11 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
     categories: frontmatter.categories,
     thumbnail: frontmatter.thumbnail.childImageSharp.gatsbyImageData,
   }
+  const decoded = decodeURI(pathname)
   return (
     <Template title={frontmatter.title}>
       <Container>
-        <LeftSide items={edges} />
+        <LeftSide items={edges} pathname={decoded} />
         <Center>
           <PostHead {...postHeadProps} />
           <PostContent html={html} />

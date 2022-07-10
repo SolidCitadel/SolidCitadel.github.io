@@ -1,5 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby'
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 type ArrowImageType = {
   publicURL: string
@@ -10,7 +10,7 @@ type ArrowImagesType = {
   rightArrow: ArrowImageType
 }
 
-const useFolder = () => {
+const useFolder = (open: boolean) => {
   const {
     downArrow: { publicURL: downArrow },
     rightArrow: { publicURL: rightArrow },
@@ -25,20 +25,23 @@ const useFolder = () => {
     }
   `)
   const ulRef = useRef<HTMLUListElement>(null)
-  const [arrowImage, setArrowImage] = useState(downArrow)
-  const [state, setState] = useState(true)
+  const [arrowImage, setArrowImage] = useState(open ? downArrow : rightArrow)
+  const [state, setState] = useState(open)
   const toggleFolder = () => {
-    if (ulRef.current) {
+    setState(!state)
+  }
+
+  useEffect(() => {
+    if (ulRef.current)
       if (state) {
-        ulRef.current.style.display = 'none'
-        setArrowImage(rightArrow)
-      } else {
         ulRef.current.style.display = 'block'
         setArrowImage(downArrow)
+      } else {
+        ulRef.current.style.display = 'none'
+        setArrowImage(rightArrow)
       }
-      setState(!state)
-    }
-  }
+  }, [ulRef.current, state])
+
   return { arrowImage, ulRef, toggleFolder }
 }
 

@@ -9,10 +9,11 @@ const useTOC = function () {
     if (!entry || !tocRef.current) return
 
     const target = entry.target as HTMLAnchorElement
-    const a = tocRef.current.querySelector(
+    const a = tocRef.current.querySelector<HTMLAnchorElement>(
       `a[href="${target.hash}"]`,
-    ) as HTMLAnchorElement
-    if (n) n.className = ''
+    )
+    if (!a || !n) return
+    n.className = ''
     a.className = 'active'
     n = a
   }
@@ -29,6 +30,15 @@ const useTOC = function () {
 
     return () => observer.disconnect()
   }, [])
+
+  useEffect(() => {
+    if (tocRef.current) {
+      const a = tocRef.current.querySelector('a')
+      if (!a) return
+      a.className = 'active'
+      n = a
+    }
+  }, [tocRef])
 
   return { tocRef }
 }
