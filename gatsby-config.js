@@ -50,6 +50,7 @@ module.exports = {
               dashes: 'oldschool',
             },
           },
+          `gatsby-remark-autolink-headers`,
           {
             resolve: 'gatsby-remark-prismjs',
             options: {
@@ -75,7 +76,6 @@ module.exports = {
               rel: 'nofollow',
             },
           },
-          `gatsby-remark-autolink-headers`,
         ],
       },
     },

@@ -5,7 +5,7 @@ interface PostContentProps {
   html: string
 }
 
-const MarkdownRenderer = styled.div`
+const MarkdownRenderer = styled.article`
   // Renderer Style
   display: flex;
   flex-direction: column;

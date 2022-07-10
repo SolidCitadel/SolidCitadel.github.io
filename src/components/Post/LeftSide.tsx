@@ -4,7 +4,7 @@ import { LeftSideItemType } from './LeftSideItem'
 import LeftSideFolder from './LeftSideFolder'
 import React from 'react'
 
-const LeftSideWrapper = styled.aside`
+const LeftSideWrapper = styled.div`
   width: 250px;
   border-right: solid 1px #e2e2e2;
 
@@ -13,12 +13,7 @@ const LeftSideWrapper = styled.aside`
   }
 `
 
-const LeftSideContainer = styled.div`
-  position: sticky;
-  top: 80px;
-  margin-bottom: auto;
-  display: flex;
-  flex-direction: column;
+const LeftSideContainer = styled.nav`
   font-size: 18px;
 
   li {
@@ -40,6 +35,7 @@ const LeftSideContainer = styled.div`
 
   a {
     line-height: 30px;
+    transition: all 0.25s ease 0s;
 
     :hover {
       color: #adadad;

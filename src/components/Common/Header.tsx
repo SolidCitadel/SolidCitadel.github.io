@@ -5,9 +5,9 @@ const HeaderWrapper = styled.header`
   display: flex;
   place-items: center;
   height: 60px;
-  padding: 11px 24px;
+  padding: 24px 11px 24px 11px;
   position: sticky;
-  top: 0;
+  top: -60px;
   width: 100%;
   background-color: white;
   z-index: 300;

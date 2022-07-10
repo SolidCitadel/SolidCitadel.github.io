@@ -19,6 +19,9 @@ export type PostPageItemType = {
 }
 
 type PostTemplateProps = {
+  location: {
+    pathname: string
+  }
   data: {
     slugMarkdownRemark: {
       edges: PostPageItemType[]
@@ -32,23 +35,33 @@ type PostTemplateProps = {
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: stretch;
+
+  nav {
+    position: sticky;
+    top: 0;
+    padding-top: 20px;
+  }
 
   @media (max-width: 1368px) {
     justify-content: center;
   }
 `
 
-const Center = styled.div`
+const Center = styled.main`
   display: flex;
   flex-direction: column;
 `
 
 const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
+  location: { pathname },
   data: {
     slugMarkdownRemark: { edges: sedges },
     allMarkdownRemark: { edges },
   },
 }) {
+  console.log(pathname)
+
   const {
     node: { html, frontmatter, tableOfContents },
   } = sedges[0]
@@ -58,7 +71,6 @@ const PostTemplate: FunctionComponent<PostTemplateProps> = function ({
     categories: frontmatter.categories,
     thumbnail: frontmatter.thumbnail.childImageSharp.gatsbyImageData,
   }
-
   return (
     <Template title={frontmatter.title}>
       <Container>
