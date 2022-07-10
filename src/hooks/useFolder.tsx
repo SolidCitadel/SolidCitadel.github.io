@@ -34,10 +34,10 @@ const useFolder = (open: boolean) => {
   useEffect(() => {
     if (ulRef.current)
       if (state) {
-        ulRef.current.style.display = 'block'
+        ulRef.current.className = 'active'
         setArrowImage(downArrow)
       } else {
-        ulRef.current.style.display = 'none'
+        ulRef.current.className = ''
         setArrowImage(rightArrow)
       }
   }, [ulRef.current, state])

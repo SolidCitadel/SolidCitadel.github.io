@@ -19,7 +19,7 @@ const PostHeadWrapper = styled.div`
   height: 200px;
 
   @media (max-width: 768px) {
-    height: 200px;
+    height: 150px;
   }
 `
 
@@ -33,7 +33,7 @@ const BackgroundImage = styled((props: GatsbyImgProps) => (
   filter: opacity(0.25) brightness(0.75);
 
   @media (max-width: 768px) {
-    height: 300px;
+    height: 150px;
   }
 `
 

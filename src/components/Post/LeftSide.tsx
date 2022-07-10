@@ -5,7 +5,7 @@ import LeftSideFolder from './LeftSideFolder'
 import React from 'react'
 
 const LeftSideWrapper = styled.div`
-  width: 250px;
+  width: 300px;
   border-right: solid 1px #e2e2e2;
 
   @media (max-width: 1368px) {
@@ -23,6 +23,10 @@ const LeftSideContainer = styled.nav`
 
   ul {
     list-style: none;
+    display: none;
+  }
+  ul.active {
+    display: block;
   }
 
   & > ul > li {

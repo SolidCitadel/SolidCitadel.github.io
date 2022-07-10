@@ -5,7 +5,7 @@ const HeaderWrapper = styled.header`
   display: flex;
   place-items: center;
   height: 60px;
-  padding: 24px 11px 24px 11px;
+  padding: 0 15px;
   position: sticky;
   top: -60px;
   width: 100%;

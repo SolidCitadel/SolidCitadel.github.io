@@ -61,7 +61,7 @@ const LeftSideFolder: FunctionComponent<LeftSideFolderProps> = function ({
         </FolderHead>
       )}
 
-      <ul ref={ulRef}>
+      <ul ref={ulRef} className={path ? 'active' : undefined}>
         {Object.entries(folders).map(([name, items]) => (
           <li key={key++}>
             <LeftSideFolder
